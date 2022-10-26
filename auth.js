@@ -1,6 +1,5 @@
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
-require("dotenv").config();
 
 const saltRounds = 12;
 

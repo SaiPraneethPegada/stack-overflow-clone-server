@@ -6,8 +6,13 @@ const question = {
     try {
       const postQuestionData = req.body;
       const userId = req.user.id;
+      const userName = req.user.displayName;
       if (userId) {
-        const postQuestion = new Questions({ ...postQuestionData, userId });
+        const postQuestion = new Questions({
+          ...postQuestionData,
+          userId,
+          userPosted: userName,
+        });
         await postQuestion.save();
         res.json({ statusCode: 200, message: "Question posted successfully" });
       } else {

@@ -1,12 +1,10 @@
 var express = require("express");
 var router = express.Router();
-const userController = require("../controllers/userController");
-const question = require("../controllers/question");
 const answer = require("../controllers/answer");
+const question = require("../controllers/question");
+const userController = require("../controllers/userController");
 const { default: mongoose } = require("mongoose");
 const { validate, auth } = require("../auth");
-require("dotenv").config();
-
 const { DBURL, DBNAME } = process.env;
 
 mongoose.connect(`${DBURL}/${DBNAME}`, (err) => {
@@ -15,7 +13,7 @@ mongoose.connect(`${DBURL}/${DBNAME}`, (err) => {
 });
 
 router.get("/", function (_, res, _) {
-  res.render("index", { title: "Express" });
+  res.render("index", { title: "Stack Overflow Clone" });
 });
 
 //user
