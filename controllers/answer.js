@@ -26,7 +26,7 @@ const answer = {
           }
         );
 
-        console.log(addAnswer);
+        // console.log(addAnswer);
         res.send({
           statusCode: 200,
           message: "Answer Added Successfully",

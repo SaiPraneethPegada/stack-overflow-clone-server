@@ -30,10 +30,10 @@ let createToken = {
 };
 
 function validate(req, res, next) {
-  console.log(req.headers);
+  // console.log(req.headers);
   const token = req.headers.authorization.split(" ")[1];
   let data = jwt.decode(token);
-  console.log(data);
+  // console.log(data);
   if (Math.round(+new Date() / 1000) < data.exp) {
     next();
   } else {
@@ -66,7 +66,7 @@ const auth = {
     try {
       // check ac token
       const token = req.header("Authorization");
-      console.log(token, "Token Authentication");
+      // console.log(token, "Token Authentication");
       if (!token)
         return res.status(400).json({ msg: "Authentication failed." });
 
@@ -76,7 +76,7 @@ const auth = {
 
         // success
         req.user = user;
-        console.log(req.user);
+        // console.log(req.user);
         next();
       });
     } catch (err) {

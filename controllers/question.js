@@ -4,22 +4,44 @@ var { Questions } = require("../models/question");
 const question = {
   postQuestion: async (req, res) => {
     try {
-      const postQuestionData = req.body;
+      const { questionTitle, questionBody, questionTags } = req.body;
       const userId = req.user.id;
       const userName = req.user.displayName;
+      const queExist = await Questions.find({
+        questionTitle,
+      });
+      const bodyExist = await Questions.find({
+        questionBody,
+      });
       if (userId) {
-        const postQuestion = new Questions({
-          ...postQuestionData,
-          userId,
-          userPosted: userName,
-        });
-        await postQuestion.save();
-        res.json({ statusCode: 200, message: "Question posted successfully" });
+        if (!queExist && !bodyExist) {
+          const postQuestion = new Questions({
+            questionTitle,
+            questionBody,
+            questionTags,
+            userId,
+            userPosted: userName,
+          });
+          await postQuestion.save();
+          res.json({
+            statusCode: 200,
+            message: "Question posted successfully",
+          });
+        } else {
+          res.json({
+            statusCode: 400,
+            message: "Find the relevant question below",
+            question: {
+              ...bodyExist,
+              ...queExist,
+            },
+          });
+        }
       } else {
         res.json({ statusCode: 400, message: "Not Authorized" });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       res.status(500).send(error.message);
     }
   },
@@ -32,7 +54,7 @@ const question = {
         allQuestions,
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       res.json({
         statusCode: 404,
         message: error.message,
@@ -183,7 +205,7 @@ const question = {
   unAnswered: async (req, res) => {
     try {
       const questions = await Questions.find({});
-      console.log(questions);
+      // console.log(questions);
       let unAnswered = [];
       let answered = [];
       questions.map((question) => {

@@ -48,7 +48,7 @@ const userController = {
         });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       res.json({
         statusCode: 500,
         message: "Internal Server Error",
@@ -60,7 +60,7 @@ const userController = {
   login: async (req, res) => {
     try {
       let user = await UserDetails.findOne({ email: req.body.email });
-      console.log(user);
+      // console.log(user);
       if (user) {
         if (await hashCompare(req.body.password, user.password)) {
           {
@@ -100,11 +100,11 @@ const userController = {
         });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       res.json({
         statusCode: 500,
         message: "Internal Server Error",
-        error,
+        error: error.message,
       });
     }
   },
@@ -199,7 +199,7 @@ const userController = {
         });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       res.json({
         statusCode: 500,
         message: error.message,
