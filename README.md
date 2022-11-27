@@ -1,15 +1,13 @@
-# stack-overflow-clone-server
+# Stack Overflow_Clone_Server
 
-## [Deployed URL](https://stack-overflow-api.onrender.com)
-
-## [Frontend Source_code](https://github.com/SaiPraneethPegada/stack-overflow-clone-client.git)
+## [Deployed URL](https://stack-overflow-api.onrender.com) | [Frontend Source_code](https://github.com/SaiPraneethPegada/stack-overflow-clone-client.git)
+ 
 
     Test Credentials: 
           email : guest@guest.com
           password : Guest@123
 
 
-----
 
 ## API End-Points:
 
