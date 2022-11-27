@@ -1,8 +1,8 @@
 # stack-overflow-clone-server
 
-> Server Deployed URL : https://stack-overflow-clone-server.herokuapp.com
+## [Deployed URL](https://stack-overflow-api.onrender.com)
 
-> Frontend Source_code : https://github.com/SaiPraneethPegada/stack-overflow-clone-client.git
+## [Frontend Source_code](https://github.com/SaiPraneethPegada/stack-overflow-clone-client.git)
 
     Test Credentials: 
           email : guest@guest.com
